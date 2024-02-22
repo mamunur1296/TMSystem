@@ -2,6 +2,7 @@
 
 namespace Tutor_Management_System.Areas.Users.Controllers
 {
+    [Area("Users")]
     public class HomeController : Controller
     {
         public IActionResult Index()
