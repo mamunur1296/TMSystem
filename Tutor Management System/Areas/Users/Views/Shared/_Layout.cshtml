@@ -42,6 +42,7 @@
                     <li><a asp-area="Users" asp-controller="Home" asp-action="Courses" class="active">Courses</a></li>
                     <li><a asp-area="Users" asp-controller="Home" asp-action="Contact" class="active">Contact</a></li>
                     <li><a asp-area="Admin" asp-controller="Home" asp-action="Index" class="active">Dashboird</a></li>
+                    <partial name="_LoginPartial" />
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -145,7 +146,7 @@
 
     <!-- Template Main JS File -->
     <script src="~/assets/js/main.js"></script>
-    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+ 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
