@@ -98,6 +98,11 @@ namespace Tutor_Management_System.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            public string ? FirstName { get; set; }
+            public string? LastName { get; set; }
+            public string? ProfilePick { get; set; }
+            public string? Dagiknation { get; set; }
+            public string? UserName { get; set; }
         }
 
 
@@ -114,9 +119,12 @@ namespace Tutor_Management_System.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.Dagiknation = Input.Dagiknation;
+                await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

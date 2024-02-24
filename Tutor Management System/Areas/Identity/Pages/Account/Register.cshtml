@@ -30,28 +30,33 @@
                                 </div>
 
                                 <form class="row g-3 needs-validation" id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" novalidate>
-                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                               
                                     <div class="col-12">
-                                        <label for="yourName" class="form-label">Your Name</label>
-                                        <input type="text" name="name" class="form-control" id="yourName" required>
+                                        <label for="First Name" class="form-label">Your Name</label>
+                                        <input asp-for="Input.FirstName" class="form-control" required>
                                         <div class="invalid-feedback">Please, enter your name!</div>
                                     </div>
-
                                     <div class="col-12">
-                                        <label for="yourEmail" class="form-label">Your Email</label>
-                                        <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                        <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                        <label for="First Name" class="form-label">Your Name</label>
+                                        <input asp-for="Input.LastName" class="form-control" required>
+                                        <div class="invalid-feedback">Please, enter your name!</div>
                                     </div>
                                      <div class="col-12">
-                                      <label for="yourUsername" class="form-label">Username</label>
+                                      <label for="yourUsername" class="form-label">Your Email</label>
                                       <div class="input-group has-validation">
                                         <span class="input-group-text" id="inputGroupPrepend"></span>
                                             <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                                         <div class="invalid-feedback">Please choose a username.</div>
                                       </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="yourUsername" class="form-label">Your Username</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text" id="inputGroupPrepend"></span>
+                                            <input asp-for="Input.UserName" class="form-control" autocomplete="username" aria-required="true" />
+                                            <div class="invalid-feedback">Please choose a username.</div>
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <label for="yourPassword" class="form-label">Password</label>

@@ -30,38 +30,36 @@
                                     <p class="text-center small">Enter your username & password to login</p>
                                 </div>
 
-                                <form class="row g-3 needs-validation" id="account" method="post" novalidate>
-                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                <form class="row g-3 needs-validation" id="account" method="post"  novalidate>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+
                                     <div class="col-12">
-                                        <label for="yourUsername" class="form-label">Username</label>
+                                        <label for="yourUsername" class="form-label">Enter Email</label>
                                         <div class="input-group has-validation">
-                                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" /> 
+                                            <input asp-for="Input.Email" class="form-control" />
+                                            <div class="invalid-feedback">Please enter a valid email.</div>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <label asp-for="Input.Password" class="form-label"></label>
-                                        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                                        <label asp-for="Input.Password" class="form-label">Password</label>
+                                        <input asp-for="Input.Password" type="password" class="form-control" />
+                                        <div class="invalid-feedback">Please enter your password.</div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <label asp-for="Input.RememberMe" class="form-label">
-                                                <input class="form-check-input" asp-for="Input.RememberMe" />
-                                                @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                            </label>
+                                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                                            <label class="form-check-label" asp-for="Input.RememberMe">@Html.DisplayNameFor(m => m.Input.RememberMe)</label>
                                         </div>
-
                                     </div>
                                     <div class="col-12">
                                         <button id="login-submit" type="submit" class="btn btn-primary w-100">Log in</button>
-
                                     </div>
                                     <div class="col-12">
-                                        <p class="small mb-0">Don't have account? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create an account</a></p>
+                                        <p class="small mb-0">Don't have an account? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create an account</a></p>
                                     </div>
                                 </form>
+
 
                             </div>
                         </div>
