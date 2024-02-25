@@ -14,6 +14,6 @@ namespace TMS.Models
         public string? LastName { get; set; }
         public string? ProfilePick { get; set; }
         public string? Dagiknation { get; set; }
-        public string ? UserName { get; set; }
+       
     }
 }

@@ -17,7 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 });
 
 
-builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
