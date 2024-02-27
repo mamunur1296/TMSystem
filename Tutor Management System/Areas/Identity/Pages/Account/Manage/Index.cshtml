@@ -4,27 +4,104 @@
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
-
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
-<div class="row">
-    <div class="col-md-6">
-        <form id="profile-form" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Username" class="form-control" disabled />
-                <label asp-for="Username" class="form-label"></label>
+
+
+    
+    <form id="profile-form" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row mb-3">
+            <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+            <div class="col-md-8 col-lg-9">
+                <img src="assets/img/profile-img.jpg" alt="Profile">
+                <div class="pt-2">
+                    <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                </div>
             </div>
-            <div class="form-floating">
+        </div>
+        <div class="row mb-3">
+            <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+            <div class="col-md-8 col-lg-9">
+                <textarea asp-for="Input.About" class="form-control" style="height: 100px"></textarea>
+                <span asp-validation-for="Input.About" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Input.Company" class="form-control" />
+                <span asp-validation-for="Input.Company" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Input.Dagiknation" class="form-control" />
+                <span asp-validation-for="Input.Dagiknation" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Input.Country" class="form-control" />
+                <span asp-validation-for="Input.Country" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Input.Address" class="form-control" />
+                <span asp-validation-for="Input.Address" class="text-danger"></span>
+            </div>
+        </div> 
+
+        <div class="row mb-3">
+            <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+            <div class="col-md-8 col-lg-9">
                 <input asp-for="Input.PhoneNumber" class="form-control" />
-                <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
-        </form>
-    </div>
-</div>
+        </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+        <div class="row mb-3">
+            <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Input.Twitter" class="form-control" />
+                <span asp-validation-for="Input.Twitter" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Input.Facebook" class="form-control" />
+                <span asp-validation-for="Input.Facebook" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Input.Instagram" class="form-control" />
+                <span asp-validation-for="Input.Instagram" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+            <div class="col-md-8 col-lg-9">
+                <input asp-for="Input.Linkedin" class="form-control" />
+                <span asp-validation-for="Input.Linkedin" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button id="update-profile-button" type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+    </form>
+

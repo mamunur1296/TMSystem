@@ -1,5 +1,11 @@
-﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+﻿@using TMS.Models;
+@using Microsoft.AspNetCore.Identity ;
+@inject SignInManager<ApplicationUser> SignInManager ;
+@inject UserManager<ApplicationUser> UserManager ;
+@{
+    ViewData["Title"] = "ProfileDetails";
+    var user = await UserManager.GetUserAsync(User);
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
     {
         Layout = parentLayout.ToString();
     }
@@ -7,23 +13,163 @@
     {
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
+    @if (user != null) {
+
+
+
+        <main id="main" class="main">
+
+            <div class="pagetitle">
+                <h1>Profile</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item">Users</li>
+                        <li class="breadcrumb-item active">Profile</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <section class="section profile">
+                <div class="row">
+                    <div class="col-xl-4">
+
+                        <div class="card w-100">
+                            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                                <img src="~/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                                <h2>@user.FirstName @user.LastName</h2>
+                                <h3>@user.Dagiknation</h3>
+                                <div class="social-links mt-2">
+                                    <a href="@user.Twitter" class="twitter"><i class="bi bi-twitter"></i></a>
+                                    <a href="@user.Facebook" class="facebook"><i class="bi bi-facebook"></i></a>
+                                    <a href="@user.Instagram" class="instagram"><i class="bi bi-instagram"></i></a>
+                                    <a href="@user.Linkedin" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <div class="tab-pane fade show active profile-overview " id="profile-overview">
+                                    <h5 class="card-title">About</h5>
+                                    <p class="small fst-italic">@user.About</p>
+
+                                    <h5 class="card-title">Profile Details</h5>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 label ">Full Name</div>
+                                        <div class="col-lg-8 col-md-8">@user.FirstName @user.LastName</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 label">Company</div>
+                                        <div class="col-lg-8 col-md-8">@user.Company</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 label">Job</div>
+                                        <div class="col-lg-8 col-md-8">@user.Dagiknation</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 label">Country</div>
+                                        <div class="col-lg-8 col-md-8">@user.Country</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 label">Address</div>
+                                        <div class="col-lg-8 col-md-8">@user.Address</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 label">Phone</div>
+                                        <div class="col-lg-8 col-md-8">@user.PhoneNumber</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 label">Email</div>
+                                        <div class="col-lg-8 col-md-8">@user.Email</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-8">
+
+                        <div class="card">
+                            <div class="card-body pt-3">
+                                
+                                <ul class="nav nav-tabs nav-tabs-bordered">
+
+                                    <partial name="_ManageNav" />
+
+                                </ul>
+                                <div class="tab-content pt-2">
+
+                                    
+
+                                    @RenderBody()
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        
+
+    }
+    else
+    {
+        <p>User is not authenticated.</p>
+    }
 }
+@* 
+    <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                        <h5 class="card-title">About</h5>
+                                        <p class="small fst-italic">@user.About</p>
 
-<h1>Manage your account</h1>
+                                        <h5 class="card-title">Profile Details</h5>
 
-<div>
-    <h2>Change your account settings</h2>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
-        </div>
-        <div class="col-md-9">
-            @RenderBody()
-        </div>
-    </div>
-</div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                                            <div class="col-lg-9 col-md-8">@user.FirstName @user.LastName</div>
+                                        </div>
 
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Company</div>
+                                            <div class="col-lg-9 col-md-8">@user.Company</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Job</div>
+                                            <div class="col-lg-9 col-md-8">@user.Dagiknation</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Country</div>
+                                            <div class="col-lg-9 col-md-8">@user.Country</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Address</div>
+                                            <div class="col-lg-9 col-md-8">@user.Address</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Phone</div>
+                                            <div class="col-lg-9 col-md-8">@user.PhoneNumber</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Email</div>
+                                            <div class="col-lg-9 col-md-8">@user.Email</div>
+                                        </div>
+
+                                    </div>
+*@

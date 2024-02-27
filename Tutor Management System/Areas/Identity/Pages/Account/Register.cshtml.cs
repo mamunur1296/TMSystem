@@ -94,7 +94,11 @@ namespace Tutor_Management_System.Areas.Identity.Pages.Account
             public string? LastName { get; set; }
             public string? ProfilePick { get; set; }
             public string? Dagiknation { get; set; }
-   
+            public string? Company { get; set; }
+            public string? Country { get; set; }
+            public string? Address { get; set; }
+            public string? About { get; set; }
+
         }
 
 
@@ -114,6 +118,11 @@ namespace Tutor_Management_System.Areas.Identity.Pages.Account
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
                 user.Dagiknation = Input.Dagiknation;
+                user.Company = Input.Company;
+                user.Country = Input.Country;   
+                user.Address = Input.Address;
+                user.ProfilePick = Input.ProfilePick;
+                user.About = Input.About;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 

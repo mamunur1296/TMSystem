@@ -59,6 +59,18 @@ namespace Tutor_Management_System.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+            public string? FirstName { get; set; }
+            public string? LastName { get; set; }
+            public string? ProfilePick { get; set; }
+            public string? Dagiknation { get; set; }
+            public string? Company { get; set; }
+            public string? Country { get; set; }
+            public string? Address { get; set; }
+            public string? About { get; set; }
+            public string? Twitter { get; set; }
+            public string? Facebook { get; set; }
+            public string? Instagram { get; set; }
+            public string? Linkedin { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
@@ -70,7 +82,19 @@ namespace Tutor_Management_System.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                ProfilePick = user.ProfilePick,
+                Dagiknation = user.Dagiknation,
+                Company = user.Company,
+                Country = user.Country,
+                Address = user.Address,
+                About = user.About,
+                Twitter = user.Twitter,
+                Facebook = user.Facebook,
+                Instagram = user.Instagram,
+                Linkedin = user.Linkedin,
             };
         }
 
@@ -110,6 +134,17 @@ namespace Tutor_Management_System.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+            user.Dagiknation = Input.Dagiknation;
+            user.Company = Input.Company;
+            user.Country = Input.Country;
+            user.Address = Input.Address;
+            user.About = Input.About;
+            user.Twitter = Input.Twitter;
+            user.Facebook = Input.Facebook;
+            user.Instagram = Input.Instagram;
+            user.Linkedin = Input.Linkedin;
+
+            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

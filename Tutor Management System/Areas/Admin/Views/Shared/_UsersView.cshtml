@@ -15,9 +15,9 @@
 
     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
         <li class="dropdown-header">
-            <h6>@user.FirstName @user.LastName</h6>
-            <p class="text-sm">@user.Email</p>
-            @if (!string.IsNullOrEmpty(user.Dagiknation))
+            <h6>@user?.FirstName @user?.LastName</h6>
+            <p class="text-sm">@user?.Email</p>
+            @if (!string.IsNullOrEmpty(user?.Dagiknation))
             {
                 <span>@user.Dagiknation</span>
             }
@@ -31,10 +31,11 @@
         </li>
 
         <li>
-            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+            <a id="manage" class="dropdown-item d-flex align-items-center" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
             </a>
+           
         </li>
         <li>
             <hr class="dropdown-divider">

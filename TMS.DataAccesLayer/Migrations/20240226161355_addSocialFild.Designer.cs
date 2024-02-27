@@ -12,8 +12,8 @@ using TMS.DataAccesLayer.Data;
 namespace TMS.DataAccesLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240223153203_init")]
-    partial class init
+    [Migration("20240226161355_addSocialFild")]
+    partial class addSocialFild
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -162,11 +162,23 @@ namespace TMS.DataAccesLayer.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Dagiknation")
@@ -179,10 +191,19 @@ namespace TMS.DataAccesLayer.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Facebook")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Instagram")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Linkedin")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -212,6 +233,9 @@ namespace TMS.DataAccesLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Twitter")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
