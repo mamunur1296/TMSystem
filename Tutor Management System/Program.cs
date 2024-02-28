@@ -5,12 +5,14 @@ using TMS.DataAccesLayer.Data;
 using TMS.DataAccesLayer.Infrastructure.IRepository;
 using TMS.DataAccesLayer.Infrastructure.Repository;
 using TMS.Helpers;
+using TMS.Helpers.FileServices;
 using TMS.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("dbcs"));
