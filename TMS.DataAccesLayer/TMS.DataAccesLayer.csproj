@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TMS.Helpers\TMS.Helpers.csproj" />
     <ProjectReference Include="..\TMS.Models\TMS.Models.csproj" />
   </ItemGroup>
 

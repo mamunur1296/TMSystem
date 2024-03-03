@@ -1,0 +1,29 @@
+﻿@using TMS.Models.ViewModels
+@model AdministrationRoleViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Edit</h1>
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Default Table</h5>
+
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="from-group">
+                    <label asp-for="RoleName"></label>
+                    <input asp-for="RoleName" class="form-control" />
+                    <span asp-validation-for="RoleName"></span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</main>
