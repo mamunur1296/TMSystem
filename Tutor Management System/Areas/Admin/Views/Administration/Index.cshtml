@@ -11,17 +11,17 @@
     <main id="main" class="main">
         <div class="card">
             <div class="card-body">
-                <a asp-area="Admin" asp-controller="Administration" asp-action="Create" class="card-title">Create Role</a>
-                <table class="table">
+                <a asp-area="Admin" asp-controller="Administration" asp-action="Create" class="btn btn-primary mt-1">Create Role</a>
+                <table class="table" id="myTable">
                     <thead>
                         <tr>
+                            <th scope="col">Action</th>
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Actions</th>
                             
                         </tr>
                     </thead>
-                    <tbody>
+                   @*  <tbody>
                         @foreach (var role in Model)
                         {
                             <tr>
@@ -34,7 +34,7 @@
                                 </td>
                             </tr>
                         }
-                    </tbody>
+                    </tbody> *@
                 </table>
             </div>
         </div>
@@ -49,4 +49,7 @@ else
             </div>
         </div>
     </main>
+}
+@section scripts{
+    <script src="~/js/rolejs.js"></script>
 }

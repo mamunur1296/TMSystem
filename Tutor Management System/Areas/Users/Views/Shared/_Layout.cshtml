@@ -41,9 +41,26 @@
                     <li><a asp-area="Users" asp-controller="Home" asp-action="About" class="active">About</a></li>
                     <li><a asp-area="Users" asp-controller="Home" asp-action="Courses" class="active">Courses</a></li>
                     <li><a asp-area="Users" asp-controller="Home" asp-action="Contact" class="active">Contact</a></li>
-                    <li><a asp-area="Admin" asp-controller="Home" asp-action="Index" class="active">Dashboird</a></li>
-                    <li><a asp-area="Student" asp-controller="Home" asp-action="Index" class="active">Student Dashboird</a></li>
-                    <partial name="_LoginPartial" />
+                   
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-area="Admin" asp-controller="Home" asp-action="Index" class="active">Dashboard</a></li>
+                        }
+                        else if (User.IsInRole("Tutor"))
+                        {
+                            <li><a class="active">Dashboard</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-area="Student" asp-controller="Home" asp-action="Index" class="active">Dashboard</a></li>
+                        }
+                    }
+                    else
+                    {
+                        <partial name="_LoginPartial" />
+                    }
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

@@ -24,6 +24,12 @@ namespace Tutor_Management_System.Areas.Admin.Controllers
 
             return View(_roleManager.Roles);
         }
+        // api get all roles 
+        [HttpGet]
+        public IActionResult GetAllRole()
+        {
+            return Json(new {data=_roleManager.Roles});
+        }
         [HttpGet]
         public IActionResult Create()
         {
@@ -71,6 +77,7 @@ namespace Tutor_Management_System.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(AdministrationRoleViewModel model)
         {
             var role = await _roleManager.FindByIdAsync(model.Id);
