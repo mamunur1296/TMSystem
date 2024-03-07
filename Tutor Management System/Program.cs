@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using TMS.DataAccesLayer.Data;
 using TMS.DataAccesLayer.Infrastructure.IRepository;
 using TMS.DataAccesLayer.Infrastructure.Repository;
+using TMS.DataAccesLayer.Service;
 using TMS.Helpers;
 using TMS.Helpers.FileServices;
 using TMS.Models;
+using TMS.Models.ViewModels;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -22,6 +24,7 @@ builder.Services.AddIdentity<ApplicationUser,IdentityRole>(options => options.Si
     .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IServices<ContactInfo>,ContactServices>();
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddRazorPages();
 

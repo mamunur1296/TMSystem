@@ -1,4 +1,4 @@
-﻿@model TMS.Models.ViewModels.ContactViewModel
+﻿@model TMS.Models.ContactInfo
 @{
     ViewData["Title"] = "Contact";
 }
@@ -51,21 +51,21 @@
                     <form asp-area="Users" asp-controller="Home" asp-action="Contact" method="post" role="form" class="php-email-form">
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="text" asp-for="Contact.Name" class="form-control" id="name" placeholder="Your Name" required>
-                                <span asp-validation-for="Contact.Name" class="text-danger"></span>
+                                <input type="text" asp-for="Name" class="form-control" id="name" placeholder="Your Name" required>
+                                <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control" asp-for="Contact.Email" id="email" placeholder="Your Email" required>
-                                <span asp-validation-for="Contact.Email" class="text-danger"></span>
+                                <input type="email" class="form-control" asp-for="Email" id="email" placeholder="Your Email" required>
+                                <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" asp-for="Contact.Subject" id="subject" placeholder="Subject" required>
-                            <span asp-validation-for="Contact.Subject" class="text-danger"></span>
+                            <input type="text" class="form-control" asp-for="Subject" id="subject" placeholder="Subject" required>
+                            <span asp-validation-for="Subject" class="text-danger"></span>
                         </div>
                         <div class="form-group mt-3">
-                            <textarea class="form-control" asp-for="Contact.Message" rows="5" placeholder="Message" required></textarea>
-                            <span asp-validation-for="Contact.Message" class="text-danger"></span>
+                            <textarea class="form-control" asp-for="Message" rows="5" placeholder="Message" required></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
                         </div>
                         <div class="text-center"><button type="submit">Send Message</button></div>
                     </form>

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 using TMS.DataAccesLayer.Infrastructure.IRepository;
+using TMS.DataAccesLayer.Service;
+using TMS.Models;
 using TMS.Models.ViewModels;
 
 namespace Tutor_Management_System.Areas.Users.Controllers
@@ -9,11 +11,11 @@ namespace Tutor_Management_System.Areas.Users.Controllers
     [Area("Users")]
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IServices<ContactInfo> _services;
 
-        public HomeController(IUnitOfWork unitOfWork)
+        public HomeController(IServices<ContactInfo> services)
         {
-            _unitOfWork = unitOfWork;
+            _services = services;
         }
 
         public IActionResult Index()
@@ -35,12 +37,11 @@ namespace Tutor_Management_System.Areas.Users.Controllers
         [HttpPost]
         [IgnoreAntiforgeryToken]
         [Authorize]
-        public IActionResult Contact(ContactViewModel contactviewModel)
+        public IActionResult Contact(ContactInfo ContactInfo)
         {
-            if(contactviewModel.Contact != null)
+            if(ContactInfo != null)
             {
-                _unitOfWork.ContactInfoRepo.Add(contactviewModel.Contact);
-                _unitOfWork.Save();
+                _services.Create(ContactInfo);
                 ModelState.Clear();
                 ViewBag.ConfirmMessage = "Your Message successfully Send !";
             }
